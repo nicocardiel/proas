@@ -1,6 +1,8 @@
 C **********************************************************************
 C                                                     SUBROUTINE DECIMAL
 C                                                     ******************
+C $Id: decimal.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE DECIMAL(A,B)
 C
 C Paso de DD.MMSS a DD.dddd

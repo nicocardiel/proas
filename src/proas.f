@@ -1,13 +1,9 @@
-C Para compilar:
-C f77 -o proas *.f -L$PGPLOT_DIR -lpgplot -lX11
-C f77pgp proas *.f ranred_.c
-C
 C **********************************************************************
 C
 C            PROAS: PROGRAMACION DE OBSERVACIONES ASTRONOMICAS
 C
-C             Ultima version: 17-diciembre-1997  (N. Cardiel)
-C
+C $Id: proas.f 559 2007-10-10 16:18:21Z spr $
+C 
 C **********************************************************************
 
       PROGRAM PROAS
@@ -161,12 +157,9 @@ C
       WRITE(*,104)
       WRITE(*,104)
       WRITE(*,*)
-      WRITE(*,101)'                                   '//
-     + 'Proas: planning of astronomical observations'
-      WRITE(*,101)'                                   '//
-     + '   Version 18-December-1997, Nicolas Cardiel'
-      WRITE(*,101)'                                   '//
-     + '         Departamento de Astrofisica, U.C.M.'
+      WRITE(*,101)'Proas: planning of astronomical observations'
+      WRITE(*,101)'$Revision: 559 $, '//
+     + 'Nicolas Cardiel Departamento de Astrofisica, U.C.M.'
       WRITE(*,*)
       WRITE(*,104)
       WRITE(*,104)

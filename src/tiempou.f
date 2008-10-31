@@ -1,6 +1,8 @@
 C **********************************************************************
 C                                                     SUBROUTINE TIEMPOU
 C                                                     ******************
+C $Id: tiempou.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE TIEMPOU(A,H,L,TS0,TU)
 C
 C Calculo del Tiempo Universal.

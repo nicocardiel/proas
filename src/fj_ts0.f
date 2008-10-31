@@ -1,6 +1,8 @@
 C **********************************************************************
 C                                                      SUBROUTINE FJ_TS0
 C                                                      *****************
+C $Id: fj_ts0.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE FJ_TS0
 C
 C Calcula la fecha juliana y el Tiempo Sidereo en Greenwich a 0h UT a

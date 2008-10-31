@@ -1,3 +1,6 @@
+C
+C $Id: dibuobje.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE DIBUOBJE(OPCMEN)
 C
       IMPLICIT NONE

@@ -1,6 +1,8 @@
 C **********************************************************************
 C                                                    SUBROUTINE CAMBCOOR
 C                                                    *******************
+C $Id: cambcoor.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE CAMBCOOR(HOR,DEC,ACI,ALT)
 C
 C Transformaciones de coordenadas:

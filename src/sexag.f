@@ -1,6 +1,8 @@
 C **********************************************************************
 C                                                       SUBROUTINE SEXAG
 C                                                       ****************
+C $Id: sexag.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE SEXAG(A,B,C,D)
 C
 C Paso de DD.dddd a DD.MMSS
