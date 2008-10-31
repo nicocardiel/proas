@@ -1,7 +1,7 @@
 C **********************************************************************
 C                                                    SUBROTUINE OBSERVAT
 C                                                    *******************
-C $Id: observat.f 558 2007-10-10 16:10:49Z spr $
+C $Id: observat.f 741 2008-01-18 12:10:37Z spr $
 C
       SUBROUTINE OBSERVAT(OBS,LAT,LONG,ALTOBS)
 C
@@ -18,14 +18,14 @@ C---> argumentos ficticios: SALIDA
       CHARACTER*15 OBS
 C---> parametros locales
       INTEGER NOBS
-      PARAMETER(NOBS=11)
+      PARAMETER(NOBS=13)
 C---> variables locales
       INTEGER I,NOPC
       CHARACTER*15 OBSER(NOBS)
 C
       DATA OBSER/'CALAR ALTO','EL TEIDE','MADRID','LA PALMA',
-     + 'SAN PEDRO','LICK','LA SILLA','MAUNA KEA','McDonald',
-     + 'KPNO','LLANO DEL HATO'/
+     + 'SAN PEDRO','LICK','LA SILLA','PARANAL','MAUNA KEA','McDonald',
+     + 'KPNO','LLANO DEL HATO','CERRO TOLOLO'/
 C
       WRITE(*,104)
       WRITE(*,101)'ENTER OBSERVATORY'
@@ -65,7 +65,7 @@ C Calar Alto
         LONG=-2.3240
         ALTOBS=2165.
       ELSE IF(NOPC.EQ.2)THEN
-C Izaña
+C Izaï¿½a
         LAT=28.1732
         LONG=-16.2945
         ALTOBS=2400.
@@ -94,26 +94,36 @@ C La Silla
         LAT=-29.1500
         LONG=-70.4400
         ALTOBS=2400.0
-      ELSEIF(NOPC.EQ.8)THEN
+      ELSE IF(NOPC.EQ.8)THEN
+C Paranal
+        LAT=-24.3732
+        LONG=-70.2410
+        ALTOBS=2635.43
+      ELSEIF(NOPC.EQ.9)THEN
 C UKIRT
         LAT=19.4932
 	LONG=-155.2824
 	ALTOBS=4194.
-      ELSEIF(NOPC.EQ.9)THEN
+      ELSEIF(NOPC.EQ.10)THEN
 C McDonald
         LAT=30.4018
         LONG=-104.0118
         ALTOBS=2075.
-      ELSEIF(NOPC.EQ.10)THEN
+      ELSEIF(NOPC.EQ.11)THEN
 C KPNO
         LAT=31.5748
         LONG=-111.3600
         ALTOBS=2120.
-      ELSEIF(NOPC.EQ.11)THEN
+      ELSEIF(NOPC.EQ.12)THEN
 C Llano del Hato (Venezuela)
 	LAT=08.4724
         LONG=-70.8667
 	ALTOBS=3610.
+      ELSEIF(NOPC.EQ.13)THEN
+C Cerro Tololo (La Serena, Chile)
+	LAT=-30.1416
+        LONG=-70.4401
+	ALTOBS=2738.
       END IF
       IF(NOPC.NE.0)OBS=OBSER(NOPC)
   100 FORMAT(A,$)
