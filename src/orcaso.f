@@ -1,6 +1,8 @@
 C **********************************************************************
 C                                                      SUBROUTINE ORCASO
 C                                                      *****************
+C $Id: orcaso.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE ORCASO(DEC,DISZEN)
 C
 C Calculamos para un objeto concreto, su visibilidad, ortos, ocasos, 

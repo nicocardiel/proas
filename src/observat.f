@@ -1,6 +1,8 @@
 C **********************************************************************
 C                                                    SUBROTUINE OBSERVAT
 C                                                    *******************
+C $Id: observat.f 558 2007-10-10 16:10:49Z spr $
+C
       SUBROUTINE OBSERVAT(OBS,LAT,LONG,ALTOBS)
 C
 C Longitud y latitud (grados), y altura (metros) de los observatorios
