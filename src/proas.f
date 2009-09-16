@@ -268,7 +268,7 @@ C
       WRITE(*,*)
       WRITE(*,104)
       WRITE(*,100)'Equinox (for all the objects) '
-      TII=READF('1950.0')
+      TII=READF('2000.0')
 C                                                   ********************
 C                                                   FECHA DE OBSERVACION
 C                                                   ********************
