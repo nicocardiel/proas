@@ -1,24 +1,10 @@
+C **********************************************************************
 C
-C     Copyright 1997-2009 Nicolás Cardiel
+C            PROAS: PROGRAMACION DE OBSERVACIONES ASTRONOMICAS
 C
-C     This file is part of Proas: pogramming astronomical observations
-C
-C     Proas is free software: you can redistribute it and/or modify
-C     it under the terms of the GNU General Public License as published by
-C     the Free Software Foundation, either version 2 of the License, or
-C     (at your option) any later version.
-C
-C     Proas is distributed in the hope that it will be useful,
-C     but WITHOUT ANY WARRANTY; without even the implied warranty of
-C     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-C     GNU General Public License for more details.
-C
-C     You should have received a copy of the GNU General Public License
-C     along with Proas.  If not, see <http://www.gnu.org/licenses/>.
-C
-C     $Id: proas.f 559 2007-10-10 16:18:21Z spr $
-C
-
+C $Id: proas.f 559 2007-10-10 16:18:21Z spr $
+C 
+C **********************************************************************
 
       PROGRAM PROAS
 C
@@ -78,7 +64,7 @@ C ascension recta y declinacion de los objetos
 C ascension recta y declinacion del Sol
       REAL ARSUN,DECSUN
 C coordenadas rectangulares
-      REAL X(3),X0(3)
+      REAL X(3),X0(3) 
 C fechas iniciales y finales de equinoccio de las coordenadas
       REAL TII,TFF,TI,TF
 C tiempo sidereo en Greenwich a 0h T.U.
@@ -199,7 +185,7 @@ C                                                   ********************
       NOPC=READILIM('2',1,2)
       IF(NOPC.EQ.2)THEN
         WRITE(*,100)'Object data file name'
-        FILNAM=READC('@','@')
+	FILNAM=READC('@','@')
         INQUIRE(FILE=FILNAM,EXIST=FILEX)
         IF(FILEX)THEN
         ELSE
@@ -216,15 +202,15 @@ C
       IF(NOPC.EQ.1)THEN
    20   CONTINUE
         WRITE(*,100)'Object name (<end> to exit, max. 30 characters) '
-        NOM0=READC('end','@')
-        CALL CHLOWER(NOM0)
+	NOM0=READC('end','@')
+	CALL CHLOWER(NOM0)
         IF(NOM0.EQ.'end') GOTO 22
         MT=MT+1
         NOM(MT)=NOM0
         WRITE(*,100)'Right ascension (HH.MMSS)'
-        ARINI(MT)=READF('@')
+	ARINI(MT)=READF('@')
         WRITE(*,100)'Declination    (+DD.MMSS)'
-        DECINI(MT)=READF('@')
+	DECINI(MT)=READF('@')
         GOTO 20
       ELSE
         OPEN(UNIT=33,FILE=FILNAM,STATUS='OLD',ERR=990)
@@ -234,7 +220,7 @@ C
         MT=MT+1
         NOM(MT)=NOM0
         CALL DECIMAL(AR0,ARINI(MT))
-        CALL DECIMAL(DEC0,DECINI(MT))
+	CALL DECIMAL(DEC0,DECINI(MT))
         WRITE(*,170)NOM(MT),AR0,DEC0
         GOTO 21
       END IF
@@ -247,17 +233,17 @@ C
         CALL LRUNX(LRUN,LMANUAL)
         IF((LRUN).OR.(LMANUAL)) WRITE(*,*)
         GOTO 10
-      END IF
+      END IF      
       WRITE(*,100)'Do you want to create an output file with'
       WRITE(*,100)' current object list (y/n) '
       OPC=READC('n','yn')
       IF(OPC.EQ.'y')THEN
-        WRITE(*,100)'File name? '
+	WRITE(*,100)'File name? '
         READ(*,'(A)')FILNAM
         OPEN(UNIT=33,FILE=FILNAM,STATUS='UNKNOWN',ERR=990)
         DO I=1,MT
-          WRITE(33,150)NOM(I),ARINI(I),DECINI(I)
-        END DO
+	  WRITE(33,150)NOM(I),ARINI(I),DECINI(I)
+	END DO
         CLOSE(UNIT=33)
       END IF
       DO I=1,MT
@@ -293,15 +279,15 @@ C                                                   ********************
       WRITE(*,100)'YEAR          '
       IANO=READI('@')
       ANO=REAL(IANO)
-      WRITE(*,100)'MONTH (number)'
+      WRITE(*,100)'MONTH (number)' 
       IMES=READI('@')
       IF((IMES.LT.1).OR.(IMES.GT.12))THEN
-        WRITE(*,101)'ERROR: invalid month number.'
+	WRITE(*,101)'ERROR: invalid month number.'
         WRITE(*,100)'Press <CR> to continue...'
         READ(*,*)
         CALL LRUNX(LRUN,LMANUAL)
         IF((LRUN).OR.(LMANUAL)) WRITE(*,*)
-        GOTO 40
+	GOTO 40
       END IF
       MES=REAL(IMES)
       WRITE(*,100)'DAY           '
@@ -341,21 +327,21 @@ C matriz de rotacion
       M(3,3)=COS(TETA)
 C coordenadas rectangulares del objeto
       DO 410,I=1,MT
-        X0(1)=COS(DECINI(I)*PI/180.)*COS(ARINI(I)*15.*PI/180.)
-        X0(2)=COS(DECINI(I)*PI/180.)*SIN(ARINI(I)*15.*PI/180.)
-        X0(3)=SIN(DECINI(I)*PI/180.)
+	X0(1)=COS(DECINI(I)*PI/180.)*COS(ARINI(I)*15.*PI/180.)
+	X0(2)=COS(DECINI(I)*PI/180.)*SIN(ARINI(I)*15.*PI/180.)
+	X0(3)=SIN(DECINI(I)*PI/180.)
 C cambio a coordenadas de la epoca
         DO 405,K=1,3
           X(K)=0.
           DO 400,KK=1,3
-            X(K)=X(K)+X0(KK)*M(K,KK)
+	    X(K)=X(K)+X0(KK)*M(K,KK)
   400     CONTINUE
   405   CONTINUE
         AR(I)=ATAN2(X(2),X(1))
-        DEC(I)=ASIN(X(3))
-        AR(I)=AR(I)*180./PI/15.
-        IF(AR(I).LT.0.)AR(I)=AR(I)+24.
-        DEC(I)=DEC(I)*180./PI
+	DEC(I)=ASIN(X(3))
+	AR(I)=AR(I)*180./PI/15.
+	IF(AR(I).LT.0.)AR(I)=AR(I)+24.
+	DEC(I)=DEC(I)*180./PI
   410 CONTINUE
 C                                                   ********************
 C                                                   FECHA JULIANA Y TSG0
@@ -385,7 +371,7 @@ C         depresion del horizonte: usamos elipsoide WGS-84
         WRITE(*,101)'Sol temporalmente circumpolar sin ortos ni ocasos'
         STOP
       ELSE IF(ESTADO.EQ.'I')THEN
-        WRITE(*,101)'Sol temporalmente invisible sin ortos ni ocasos'
+	WRITE(*,101)'Sol temporalmente invisible sin ortos ni ocasos'
         STOP
       END IF
 C ocaso del Sol (calculamos el ocaso que tiene lugar a partir de las 0h
@@ -397,7 +383,7 @@ C de T.U. del dia de la observacion).
       CALL POSSOL(0)
       CALL ORCASO(DECSUN,DISZEN)
       CALL TIEMPOU(ARSUN,HOCASO,LONG,TS0,TUOCASO2)
-ccc     type*,'tuocaso1,2: ',tuocaso1,tuocaso2
+ccc	type*,'tuocaso1,2: ',tuocaso1,tuocaso2
       IF(ABS(TUOCASO1-TUOCASO2).GT.12.0)THEN
         IF(TUOCASO1.GT.TUOCASO2)THEN
           TUOCASO2=TUOCASO2+24.
@@ -406,7 +392,7 @@ ccc     type*,'tuocaso1,2: ',tuocaso1,tuocaso2
         END IF
       END IF
       IF(ABS(TUOCASO1-TUOCASO2).GT.0.0003)THEN
-        TUOCASO1=TUOCASO2
+	TUOCASO1=TUOCASO2
         GOTO 200
       END IF
 C crepusculo astronomico vespertino (utilizamos como valor inicial en
@@ -422,7 +408,7 @@ C la iteracion el instante del ocaso)
         STOP
       END IF
       CALL TIEMPOU(ARSUN,HOCASO,LONG,TS0,TUCREPV2)
-ccc     type*,'tucrepv1,2: ',tucrepv1,tucrepv2
+ccc	type*,'tucrepv1,2: ',tucrepv1,tucrepv2
       IF(ABS(TUCREPV1-TUCREPV2).GT.12.0)THEN
         IF(TUCREPV1.GT.TUCREPV2)THEN
           TUCREPV2=TUCREPV2+24.
@@ -443,7 +429,7 @@ C de T.U. del dia de la observacion)
       CALL POSSOL(0)
       CALL ORCASO(DECSUN,DISZEN)
       CALL TIEMPOU(ARSUN,HORTO,LONG,TS0,TUORTO2)
-ccc     type*,'tuorto1,2: ',tuorto1,tuorto2
+ccc	type*,'tuorto1,2: ',tuorto1,tuorto2
       IF(ABS(TUORTO1-TUORTO2).GT.12.0)THEN
         IF(TUORTO1.GT.TUORTO2)THEN
           TUORTO2=TUORTO2+24.
@@ -464,7 +450,7 @@ C la iteracion el instante del orto)
       CALL POSSOL(0)
       CALL ORCASO(DECSUN,108.0+ANGHOA)
       CALL TIEMPOU(ARSUN,HORTO,LONG,TS0,TUCREPM2)
-ccc     type*,'tucrepm1,2: ',tucrepm1,tucrepm2
+ccc	type*,'tucrepm1,2: ',tucrepm1,tucrepm2
       IF(ABS(TUCREPM1-TUCREPM2).GT.12.0)THEN
         IF(TUCREPM1.GT.TUCREPM2)THEN
           TUCREPM2=TUCREPM2+24.
@@ -491,7 +477,7 @@ C posicion del Sol para el dia siguiente al de la observacion
         CALL POSSOL(0)
         CALL ORCASO(DECSUN,DISZEN)
         CALL TIEMPOU(ARSUN,HORTO,LONG,TS0,TUORTO2)
-ccc     type*,'tuorto1,2: ',tuorto1,tuorto2
+ccc	type*,'tuorto1,2: ',tuorto1,tuorto2
 
         IF(ABS(TUORTO1-TUORTO2).GT.12.0)THEN
            IF(TUORTO1.GT.TUORTO2)THEN
@@ -513,13 +499,13 @@ C la iteracion el instante del crepusculo para el dia anterior)
         HORA=TUCREPM1+24
         CALL FJ_TS0
 C TS 0h T.U. del dia siguiente al de la observacion
-        TS0=TS0+24.*2.737909E-3
+	TS0=TS0+24.*2.737909E-3
         IF(TS0.GT.24.)TS0=TS0-24.
 C posicion del Sol para el dia siguiente al de la observacion
         CALL POSSOL(0)
         CALL ORCASO(DECSUN,108.0+ANGHOA)
         CALL TIEMPOU(ARSUN,HORTO,LONG,TS0,TUCREPM2)
-ccc     type*,'tucrepm1,2: ',tucrepm1,tucrepm2
+ccc	type*,'tucrepm1,2: ',tucrepm1,tucrepm2
         IF(ABS(TUCREPM2-TUCREPM1).GT.0.0003)THEN
           TUCREPM1=TUCREPM2
           GOTO 221
@@ -531,11 +517,11 @@ C limites temporales en los cuales trabajaremos
       TUCREPV=TUCREPV2
       TUCREPM=TUCREPM2
       TUFIN=TUORTO2
-ccc     type*,TUINI,TUCREPV,TUCREPM,TUFIN
+ccc	type*,TUINI,TUCREPV,TUCREPM,TUFIN
       IF(TUCREPV.LT.TUINI) TUCREPV=TUCREPV+24
       IF(TUCREPM.LT.TUCREPV) TUCREPM=TUCREPM+24
       IF(TUFIN.LT.TUCREPM) TUFIN=TUFIN+24
-ccc     type*,TUINI,TUCREPV,TUCREPM,TUFIN
+ccc	type*,TUINI,TUCREPV,TUCREPM,TUFIN
 C recalculamos la FJ y TS0 para el dia de la observacion a 0h TU
       HORA=0.
       CALL FJ_TS0
@@ -557,21 +543,21 @@ C                                                       ****************
       IF(OPCMEN.EQ.4) GOTO 40
       IF(OPCMEN.EQ.1)THEN
         WRITE(*,100)'No. of objets/plot '
-        NOBJEG=READILIM('10',1,10)
-        NPTOSF=100
+	NOBJEG=READILIM('10',1,10)
+	NPTOSF=100
       ELSE IF(OPCMEN.EQ.3)THEN
         WRITE(*,100)'No. of objets/plot '
-        NOBJEG=READILIM('40',1,40)
-ccc     IF(NOBJEG.GT.40) NOBJEG=40
-ccc     WRITE(*,100)'Num. puntos que definen la trayectoria '//
+	NOBJEG=READILIM('40',1,40)
+ccc	IF(NOBJEG.GT.40) NOBJEG=40
+ccc	WRITE(*,100)'Num. puntos que definen la trayectoria '//
 ccc     +   'de los objetos '
-ccc     NPTOSF=READILIM('50',1,100)
-        NPTOSF=100
+ccc	NPTOSF=READILIM('50',1,100)
+	NPTOSF=100
       ELSE
         WRITE(*,100)'No. of objets/plot '
-        NOBJEG=READI('@')
-ccc     NPTOSF=50
-        NPTOSF=100
+	NOBJEG=READI('@')
+ccc	NPTOSF=50
+	NPTOSF=100
 ccc        OPEN(UNIT=33,FILE='proas.dat',STATUS='UNKNOWN')
       END IF
       IF(NOBJEG.LT.1)NOBJEG=1
@@ -601,251 +587,249 @@ C
         GOTO 310
       END IF
       IF(OPCOUT.EQ.1)THEN
-        SALIDAG='/xserve'
+	SALIDAG='/xserve'
       ELSE IF(OPCOUT.EQ.2)THEN
-        SALIDAG='/ps'
+	SALIDAG='/ps'
       ELSE IF(OPCOUT.EQ.3)THEN
-        SALIDAG='?'
+	SALIDAG='?'
       END IF
 C                                        *******************************
 C                                        DIBUJAMOS CARTA CON LOS OBJETOS
 C                                        *******************************
-CP      CALL PGBEGIN(0,SALIDAG,1,1)
-CP    SALIDAG is the device, this must be changed with plplot
-      call plsdev("xwin")
-      call plinit
-CP      CALL PGASK(.FALSE.)
+      CALL PGBEGIN(0,SALIDAG,1,1)
+      CALL PGASK(.FALSE.)
       DO 550,I=1,MT
         IF(REAL(I-1)/NOBJEG.EQ.REAL((I-1)/NOBJEG))THEN
           IF(I.NE.1)THEN
-            IF(OPCOUT.NE.2)THEN
+	    IF(OPCOUT.NE.2)THEN
               WRITE(*,100)'Press <CR> to continue...'
               READ(*,*)
               CALL LRUNX(LRUN,LMANUAL)
               IF((LRUN).OR.(LMANUAL)) WRITE(*,*)
-            END IF
-            call pladv(0)
-          END IF
+	    END IF
+	    CALL PGPAGE
+ 	  END IF
           NBODY=0.
           CALL DIBUHOJA(OPCMEN)
 C***>
-CP            CALL PLSCH(0.7)
+            CALL PGSCH(0.7)
 C observatorio
             WRITE(LINEA,'(A29)')'Observatory: '//OBS
-          IF(OPCMEN.EQ.1)THEN
-            call plptex(200.,72.,0.,0.,LINEA(1:29))
-          ELSE IF(OPCMEN.EQ.2)THEN
-            CALL plptex(80.,185.,0.,0.,LINEA(1:29))
-ccc         WRITE(33,104)
-ccc         WRITE(33,101)LINEA(1:29)
-          ELSE
-            CALL plptex(50.,185.,0.,0.,LINEA(1:29))
-          END IF
-          IF(OPCMEN.EQ.1)THEN
+	  IF(OPCMEN.EQ.1)THEN
+            CALL PGPTEXT(200.,72.,0.,0.,LINEA(1:29))
+	  ELSE IF(OPCMEN.EQ.2)THEN
+	    CALL PGPTEXT(80.,185.,0.,0.,LINEA(1:29))
+ccc	    WRITE(33,104)
+ccc	    WRITE(33,101)LINEA(1:29)
+	  ELSE
+	    CALL PGPTEXT(50.,185.,0.,0.,LINEA(1:29))
+	  END IF
+	  IF(OPCMEN.EQ.1)THEN
 C latitud
-            CALL plptex(239.,68.,0.,1.,'Latitude:')
+            CALL PGPTEXT(239.,68.,0.,1.,'Latitude:')
             WRITE(LINEA,'(F8.4)')LAT0
             IF(LINEA(1:1).EQ.' ') LINEA(1:1)='+'
             LINEA(1:18)=LINEA(1:3)//'\\uo\\d '
      +       //LINEA(5:6)//CHAR(39)//' '//LINEA(7:8)//'"'
-            CALL plptex(240.,68.,0.,0.,' '//LINEA(1:18))
+            CALL PGPTEXT(240.,68.,0.,0.,' '//LINEA(1:18))
 C longitud
-            CALL plptex(239.,64.,0.,1.,'Longitude:')
+	    CALL PGPTEXT(239.,64.,0.,1.,'Longitude:')
             WRITE(LINEA,'(F9.4)')LONG0
             LINEA(1:18)=LINEA(1:4)//'\\uo\\d '
      +       //LINEA(6:7)//CHAR(39)//' '//LINEA(8:9)//'"'
-            CALL plptex(240.,64.,0.,0.,LINEA(1:18))
+            CALL PGPTEXT(240.,64.,0.,0.,LINEA(1:18))
 C altura
-            CALL plptex(239.,60.,0.,1.,'Height:')
+            CALL PGPTEXT(239.,60.,0.,1.,'Height:')
             WRITE(LINEA,'(F5.0,A2)')ALTOBS,' m'
-            CALL plptex(240.,60.,0.,0.,LINEA(1:7))
-          END IF
+            CALL PGPTEXT(240.,60.,0.,0.,LINEA(1:7))
+	  END IF
 C fecha
             WRITE(LINEA,'(A7,I4.4,A2,I2.2,A11)')'DATE: ',
      +           INT(ANO),', ',INT(DIA),' '//MESNAME(INT(MES))
-          IF(OPCMEN.EQ.1)THEN
-            CALL plptex(200.,52.,0.,0.,LINEA(1:29))
-          ELSE IF(OPCMEN.EQ.2)THEN
-            CALL plptex(150.,185.,0.,0.,LINEA(1:29))
-ccc         WRITE(33,101)LINEA(1:29)
-          ELSE
-            CALL plptex(120.,185.,0.,0.,LINEA(1:29))
-          END IF
-          IF(OPCMEN.EQ.1)THEN
+	  IF(OPCMEN.EQ.1)THEN
+            CALL PGPTEXT(200.,52.,0.,0.,LINEA(1:29))
+	  ELSE IF(OPCMEN.EQ.2)THEN
+	    CALL PGPTEXT(150.,185.,0.,0.,LINEA(1:29))
+ccc	    WRITE(33,101)LINEA(1:29)
+	  ELSE
+	    CALL PGPTEXT(120.,185.,0.,0.,LINEA(1:29))
+	  END IF
+	  IF(OPCMEN.EQ.1)THEN
 C fecha juliana
-            CALL plptex(239.,48.,0.,1.,'JD (at 0h UT):')
+            CALL PGPTEXT(239.,48.,0.,1.,'JD (at 0h UT):')
             WRITE(LINEA,'(F9.1)')FJ
-            CALL plptex(240.,48.,0.,0.,LINEA(1:9))
+ 	    CALL PGPTEXT(240.,48.,0.,0.,LINEA(1:9))
 C TSG(0h TU)
-            CALL plptex(239.,44.,0.,1.,'GST (at 0h UT):')
-            CALL SEXAG(TS0,ALH,ALM,ALS)
+	    CALL PGPTEXT(239.,44.,0.,1.,'GST (at 0h UT):')
+	    CALL SEXAG(TS0,ALH,ALM,ALS)
             WRITE(LINEA,'(2(I2.2,A2),I2.2,A1)')INT(ALH),'h ',INT(ALM),
      +           'm ',INT(ALS),'s'
-            CALL plptex(240.,44.,0.,0.,LINEA(1:11))
+            CALL PGPTEXT(240.,44.,0.,0.,LINEA(1:11))
 C TSL(0h TU)
             TSL=TS0+LONG
             IF(TSL.GT.24)TSL=TSL-24.
             IF(TSL.LE.0.)TSL=TSL+24.
             CALL SEXAG(TSL,ALH,ALM,ALS)
-            CALL plptex(239.,40.,0.,1.,'LST (at 0h UT):')
+            CALL PGPTEXT(239.,40.,0.,1.,'LST (at 0h UT):')
             WRITE(LINEA,'(2(I2.2,A2),I2.2,A1)')INT(ALH),'h ',INT(ALM),
      +           'm ',INT(ALS),'s'
-            CALL plptex(240.,40.,0.,0.,LINEA(1:11))
+            CALL PGPTEXT(240.,40.,0.,0.,LINEA(1:11))
 C ocaso del Sol
-            CALL plptex(239.,32.,0.,1.,'sunset:')
-            CALL SEXAG(TUINI,ALH,ALM,ALS)
+            CALL PGPTEXT(239.,32.,0.,1.,'sunset:')
+	    CALL SEXAG(TUINI,ALH,ALM,ALS)
             WRITE(LINEA,'(I2.2,A2,I2.2,A1)')INT(ALH),
      +           'h ',INT(ALM),'m'
-            CALL plptex(240.,32.,0.,0.,LINEA(1:7)//' (UT)')
+            CALL PGPTEXT(240.,32.,0.,0.,LINEA(1:7)//' (UT)')
 C fin crepusculo astronomico vespertino
-            CALL plptex(239.,28.,0.,1.,'end of twilight:')
-            IF(TUCREPV.GT.24)THEN
-              CALL SEXAG(TUCREPV-24.,ALH,ALM,ALS)
-            ELSE
-              CALL SEXAG(TUCREPV,ALH,ALM,ALS)
-            END IF
+	    CALL PGPTEXT(239.,28.,0.,1.,'end of twilight:')
+	    IF(TUCREPV.GT.24)THEN
+	      CALL SEXAG(TUCREPV-24.,ALH,ALM,ALS)
+	    ELSE
+	      CALL SEXAG(TUCREPV,ALH,ALM,ALS)
+	    END IF
             WRITE(LINEA,'(I2.2,A2,I2.2,A1)')INT(ALH),
      +           'h ',INT(ALM),'m'
-            CALL plptex(240.,28.,0.,0.,LINEA(1:7)//' (UT)')
+            CALL PGPTEXT(240.,28.,0.,0.,LINEA(1:7)//' (UT)')
 C inicio crepusculo astronomico matutino
-            CALL plptex(239.,24.,0.,1.,'beginning of twilight:')
-            IF(TUCREPM.GT.24.)THEN
-              CALL SEXAG(TUCREPM-24,ALH,ALM,ALS)
-            ELSE
-              CALL SEXAG(TUCREPM,ALH,ALM,ALS)
-            END IF
+	    CALL PGPTEXT(239.,24.,0.,1.,'beginning of twilight:')
+	    IF(TUCREPM.GT.24.)THEN
+	      CALL SEXAG(TUCREPM-24,ALH,ALM,ALS)
+	    ELSE
+	      CALL SEXAG(TUCREPM,ALH,ALM,ALS)
+	    END IF
             WRITE(LINEA,'(I2.2,A2,I2.2,A1)')INT(ALH),
      +           'h ',INT(ALM),'m'
-            CALL plptex(240.,24.,0.,0.,LINEA(1:7)//' (UT)')
+            CALL PGPTEXT(240.,24.,0.,0.,LINEA(1:7)//' (UT)')
 C orto del Sol
-            CALL plptex(239.,20.,0.,1.,'sunrise:')
+	    CALL PGPTEXT(239.,20.,0.,1.,'sunrise:')
             IF(TUFIN.GT.24)THEN
-              CALL SEXAG(TUFIN-24.,ALH,ALM,ALS)
+	      CALL SEXAG(TUFIN-24.,ALH,ALM,ALS)
             ELSE
-              CALL SEXAG(TUFIN,ALH,ALM,ALS)
-            END IF
+	      CALL SEXAG(TUFIN,ALH,ALM,ALS)
+	    END IF
             WRITE(LINEA,'(I2.2,A2,I2.2,A1)')INT(ALH),
      +           'h ',INT(ALM),'m'
-            CALL plptex(240.,20.,0.,0.,LINEA(1:7)//' (UT)')
+            CALL PGPTEXT(240.,20.,0.,0.,LINEA(1:7)//' (UT)')
 C duracion de la noche cerrada
             DNOCHE=TUCREPM-TUCREPV
             IF(TUCREPM.LT.TUCREPV)DNOCHE=24+DNOCHE
-            CALL plptex(249.,16.,0.,1.,'Night time free of twilight:')
+            CALL PGPTEXT(249.,16.,0.,1.,'Night time free of twilight:')
             CALL SEXAG(DNOCHE,ALH,ALM,ALS)
             WRITE(LINEA,'(I2.2,A2,I2.2,A1)')INT(ALH),
      +           'h ',INT(ALM),'m'
-            CALL plptex(250.,16.,0.,0.,LINEA(1:7))
+            CALL PGPTEXT(250.,16.,0.,0.,LINEA(1:7))
 C copywrite
             WRITE(LINEA,'(A50)')'\\(0274) ncl@astrax.fis.ucm.es, '//
      +                          'Departamento de Astrofisica (UCM)'
-CP            CALL PLSCH(0.45)
-            CALL plptex(279.,1.,0.,1.,LINEA(1:50))
+            CALL PGSCH(0.45)
+            CALL PGPTEXT(279.,1.,0.,1.,LINEA(1:50))
 C***>
-          END IF
+	  END IF
         END IF
         RALEAT=RANRED(NSEED)
         IALEAT=INT(RALEAT*20)+1
         NBODY=NBODY+1
         DO 520,K=1,NPTOSF
-C instante en T.U. en que calculamos la posicion
+C instante en T.U. en que calculamos la posicon
           TU(K)=TUINI+(TUFIN-TUINI)*REAL(K-1)/REAL(NPTOSF-1)
 C calculamos el TSG para el instante TU
           TSG=TS0+TU(K)+TU(K)*2.737909E-3
 C TSL para el instante TU
           TSL=TSG+LONG
 C angulo horario
-          HOR=TSL-AR(I)
+	  HOR=TSL-AR(I)
 C pasamos a coordenadas horizontales
-          CALL CAMBCOOR(HOR,DEC(I),ACIMUT(K),ALTURA(K))
+	  CALL CAMBCOOR(HOR,DEC(I),ACIMUT(K),ALTURA(K))
   520   CONTINUE
         CALL DIBUOBJE(OPCMEN)
         IF(OPCMEN.EQ.1)THEN
 C***>
-CP          CALL PGSCH(0.6)
+          CALL PGSCH(0.6)
 C objeto
           WRITE(LINEA,'(A8,I2,A17)')'OBJECT #',NBODY,': '//NOM(I)
           YPGP=1.5+(10.-REAL(NBODY))*19.+14.
-          CALL plptex(3.,YPGP,0.,0.,LINEA(1:38))
+          CALL PGPTEXT(3.,YPGP,0.,0.,LINEA(1:38))
 C ascension recta epoca inicial
           YPGP=YPGP-4.0
-          CALL plptex(3.,YPGP,0.,0.,'\\ga:')
+          CALL PGPTEXT(3.,YPGP,0.,0.,'\\ga:')
           CALL SEXAG(ARINI(I),ALH,ALM,ALS)
-          WRITE(LINEA,'(2(I2.2,A2),I2.2,A1)')INT(ALH),'h ',INT(ALM),
+  	  WRITE(LINEA,'(2(I2.2,A2),I2.2,A1)')INT(ALH),'h ',INT(ALM),
      +         'm ',INT(ALS),'s'
-          CALL plptex(8.,YPGP,0.,0.,LINEA(1:11))
+          CALL PGPTEXT(8.,YPGP,0.,0.,LINEA(1:11))
 C declinacion epoca inicial
-          CALL plptex(35.,YPGP,0.,0.,'\\gd:')
+          CALL PGPTEXT(35.,YPGP,0.,0.,'\\gd:')
           CALL SEXAG(DECINI(I),ALH,ALM,ALS)
           SIGNO='+'
           IF(DECINI(I).LT.0)THEN
-            SIGNO='-'
+	    SIGNO='-'
             ALH=ABS(ALH)
             ALM=ABS(ALM)
-            ALS=ABS(ALS)
-          END IF
+	    ALS=ABS(ALS)
+	  END IF
           WRITE(LINEA,'(A1,I2.2,A,I2.2,A2,I2.2,A1)')SIGNO,INT(ALH),
      +         '\\uo\\d ',INT(ALM),CHAR(39)//' ',INT(ALS),'"'
-          CALL plptex(40.,YPGP,0.,0.,LINEA(1:18))
+          CALL PGPTEXT(40.,YPGP,0.,0.,LINEA(1:18))
 C epoca inicial
           WRITE(LINEA,'(A1,F6.1,A1)')'(',TII,')'
-          CALL plptex(65.,YPGP,0.,0.,LINEA(1:8))
+          CALL PGPTEXT(65.,YPGP,0.,0.,LINEA(1:8))
 C ascension recta epoca final
           YPGP=YPGP-4.0
-          CALL plptex(3.,YPGP,0.,0.,'\\ga:')
+          CALL PGPTEXT(3.,YPGP,0.,0.,'\\ga:')
           CALL SEXAG(AR(I),ALH,ALM,ALS)
-          WRITE(LINEA,'(2(I2.2,A2),I2.2,A1)')INT(ALH),'h ',INT(ALM),
+  	  WRITE(LINEA,'(2(I2.2,A2),I2.2,A1)')INT(ALH),'h ',INT(ALM),
      +         'm ',INT(ALS),'s'
-          CALL plptex(8.,YPGP,0.,0.,LINEA(1:11))
+          CALL PGPTEXT(8.,YPGP,0.,0.,LINEA(1:11))
 C declinacion epoca final
-          CALL plptex(35.,YPGP,0.,0.,'\\gd:')
+          CALL PGPTEXT(35.,YPGP,0.,0.,'\\gd:')
           CALL SEXAG(DEC(I),ALH,ALM,ALS)
           SIGNO='+'
           IF(DEC(I).LT.0)THEN
-            SIGNO='-'
+	    SIGNO='-'
             ALH=ABS(ALH)
             ALM=ABS(ALM)
-            ALS=ABS(ALS)
-          END IF
+	    ALS=ABS(ALS)
+	  END IF
           WRITE(LINEA,'(A1,I2.2,A,I2.2,A2,I2.2,A1)')SIGNO,INT(ALH),
      +         '\\uo\\d ',INT(ALM),CHAR(39)//' ',INT(ALS),'"'
-          CALL plptex(40.,YPGP,0.,0.,LINEA(1:18))
+          CALL PGPTEXT(40.,YPGP,0.,0.,LINEA(1:18))
 C epoca final
           WRITE(LINEA,'(A1,F6.1,A1)')'(',TFF,')'
-          CALL plptex(65.,YPGP,0.,0.,LINEA(1:8))
+          CALL PGPTEXT(65.,YPGP,0.,0.,LINEA(1:8))
 C condiciones de la culminacion
           YPGP=YPGP-4.0
           CALL ORCASO(DEC(I),90+34./60.+ANGHOA)
           IF(ESTADO.EQ.'I')THEN
-            CALL plptex(3.,YPGP,0.,0.,'Object is INVISIBLE')
+	    CALL PGPTEXT(3.,YPGP,0.,0.,'Object is INVISIBLE')
           ELSE
-            CALL plptex(3.,YPGP,0.,0.,'Culmination: ')
+            CALL PGPTEXT(3.,YPGP,0.,0.,'Culmination: ')
             WRITE(LINEA,'(F4.1,1X,A1)')ALTCUL,DONCUL
-            CALL plptex(30.,YPGP,0.,0.,LINEA(1:6))
+            CALL PGPTEXT(30.,YPGP,0.,0.,LINEA(1:6))
             CALL TIEMPOU(AR(I),0.,LONG,TS0,TUCULM)
             CALL SEXAG(TUCULM,ALH,ALM,ALS)
             WRITE(LINEA,'(2(I2.2,A2),I2.2,A1)')INT(ALH),'h ',INT(ALM),
      +           'm ',INT(ALS),'s'
-          END IF
-          CALL plptex(45.,YPGP,0.,0.,LINEA(1:11))
+	  END IF
+          CALL PGPTEXT(45.,YPGP,0.,0.,LINEA(1:11))
 C***>
           IF((REAL(I)/NOBJEG.EQ.REAL(I/NOBJEG)).OR.(I.EQ.MT))THEN
-          ELSE
-            call pllsty(3)
-            call pljoin(1.,YPGP-2.,80.,YPGP-2.)
-            call pllsty(1)
-          END IF
-        END IF
+ 	  ELSE
+	    CALL PGSLS(3)
+	    CALL PGMOVE(1.,YPGP-2.)
+	    CALL PGDRAW(80.,YPGP-2.)
+            CALL PGSLS(1)
+	  END IF
+	END IF
         IF(OPCMEN.EQ.2)THEN
-ccc       WRITE(33,'(A8,I2,A17)')'Object #',NBODY,': '//NOM(I)
-        END IF
-        IF(OPCMEN.EQ.3)THEN
+ccc	  WRITE(33,'(A8,I2,A17)')'Object #',NBODY,': '//NOM(I)
+	END IF
+	IF(OPCMEN.EQ.3)THEN
           WRITE(LINEA,'(A,I2,A)')'#',NBODY,': '//NOM(I)
           YPGP=(41.-REAL(NBODY))*4.+14.
-CP          CALL PGSCH(0.6)
-          CALL plptex(225.,YPGP,0.,0.,LINEA(1:38))
-        END IF
+	  CALL PGSCH(0.6)
+          CALL PGPTEXT(225.,YPGP,0.,0.,LINEA(1:38))
+	END IF
   550 CONTINUE
-      CALL plend
+      CALL PGEND
       GOTO 300
   560 CONTINUE
 ccc      CLOSE(UNIT=33)

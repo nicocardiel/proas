@@ -9,7 +9,7 @@ endprogram.f fj_ts0.f lrunx.f observat.f orcaso.f possol.f proas.f \
 ranred_.c readc.f readf.f readi.f readilim.f rmblank.f sexag.f \
 tiempou.f traspasa.f truebeg.f truelen.f
 
-LDADD = @PLPLOT_LIBS@
-AM_FFLAGS = @PLPLOT_CFLAGS@
+LDADD =  $(PGPLOT_LIBS)
+##AM_FFLAGS=-I$(srcdir)
 
 EXTRA_DIST = proas.inc
