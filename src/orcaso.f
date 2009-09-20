@@ -59,10 +59,10 @@ C     ESTADO = O ==> Objeto con ORTOS y OCASOS
       IF(ESTADO.EQ.'O')THEN
         COSENOH=(SIN(ALTR)-SIN(LATR)*SIN(DECR))/(COS(LATR)*COS(DECR))
         if(cosenoh.lt.-1.) cosenoh=-1.
-        if(cosenoh.gt.+1.) cosenoh=+1.
+	if(cosenoh.gt.+1.) cosenoh=+1.
         COSENOA=(SIN(ALTR)*SIN(LATR)-SIN(DECR))/(COS(ALTR)*COS(LATR))
         if(cosenoa.lt.-1.) cosenoa=-1.
-        if(cosenoa.gt.+1.) cosenoa=+1.
+	if(cosenoa.gt.+1.) cosenoa=+1.
         HOCASO=ACOS(COSENOH)
         HOCASO=HOCASO*180./PI
         AOCASO=ACOS(COSENOA)
