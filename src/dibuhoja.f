@@ -40,20 +40,20 @@ c centro grafica (acimut,altura) y radio en milimetros
         ycen=42
         radg=35
       ELSE IF(OPCMEN.EQ.'2')THEN
-	XMIN=15
-	XMAX=270
-	YMIN=10
-	YMAX=180
+        XMIN=15
+        XMAX=270
+        YMIN=10
+        YMAX=180
       ELSE IF(OPCMEN.EQ.'3')THEN
-	XMIN=15
-	XMAX=215
-	YMIN=10
-	YMAX=180
+        XMIN=15
+        XMAX=215
+        YMIN=10
+        YMAX=180
       ELSE IF(OPCMEN.EQ.'5')THEN
-	XMIN=15
-	XMAX=270
-	YMIN=10
-	YMAX=180
+        XMIN=15
+        XMAX=270
+        YMIN=10
+        YMAX=180
       END IF
 c
       call pgvport(0.,1.,0.,1.)
@@ -76,17 +76,17 @@ c caja grafica (altura,tu)
 c eje vertical (de 0 a 90 grados)
       do i=0,90,10
         y=ymin+(ymax-ymin)*real(i)/90
-	IF((OPCMEN.EQ.'3').OR.(OPCMEN.EQ.'5'))THEN
+        IF((OPCMEN.EQ.'3').OR.(OPCMEN.EQ.'5'))THEN
           CALL PGMOVE(XMIN,Y)
-	  CALL PGDRAW(XMIN+(XMAX-XMIN)/50.,Y)
+          CALL PGDRAW(XMIN+(XMAX-XMIN)/50.,Y)
           CALL PGMOVE(XMAX,Y)
-	  CALL PGDRAW(XMAX-(XMAX-XMIN)/50.,Y)
-	ELSE
+          CALL PGDRAW(XMAX-(XMAX-XMIN)/50.,Y)
+        ELSE
           CALL PGSLS(4)
           CALL PGMOVE(XMIN,Y)
-	  CALL PGDRAW(XMAX,Y)
+          CALL PGDRAW(XMAX,Y)
           CALL PGSLS(1)
-	END IF
+        END IF
         write(cnum,'(i2.2)')i
         call pgptext(xmin-1,y-1.5,0.,1.,cnum(1:2))
       end do
@@ -137,11 +137,15 @@ c eje horizontal (de tuini_ a tufin_)
       tu=tu+1
       if(tu.le.int(tufin_))then
         call ejex(tu,OPCMEN)
-	goto 10
+        goto 10
       end if
       call pgptext(xmax,ymin-8,0.,1.,'(UT)')
 C ocaso del Sol
       x=xmin+(xmax-xmin)*(TUINI-tuini_)/(tufin_-tuini_)
+      CALL PGSLS(1)
+      CALL PGMOVE(X,YMIN)
+      CALL PGDRAW(X,YMAX)
+      CALL PGSLS(1)
       CALL PGSCH(0.5)
       CALL PGPTEXT(X,YMAX+4,0.,.5,'sunset')
       CALL FLECHA(X,YMAX,OPCMEN,3.0)
@@ -165,6 +169,10 @@ C inicio crepusculo astronomico matutino
       CALL FLECHA(X,YMAX,OPCMEN,6.0)
 C fin crepusculo astronomico vespertino
       x=xmin+(xmax-xmin)*(TUFIN-tuini_)/(tufin_-tuini_)
+      CALL PGSLS(1)
+      CALL PGMOVE(X,YMIN)
+      CALL PGDRAW(X,YMAX)
+      CALL PGSLS(1)
       CALL PGPTEXT(X,YMAX+4,0.,.5,'sunrise')
       CALL FLECHA(X,YMAX,OPCMEN,3.0)
       CALL PGSCH(0.75)
@@ -216,7 +224,7 @@ c ejes de la grafica (acimut,altura)
         call pgptext(xcen,ycen-radg-5,0.,.5,'S (0\\uo\\d)')
 c eje NORTE-SUR
         do i=10,80,10
-	  y=radg*(90-real(i))/90+ycen
+          y=radg*(90-real(i))/90+ycen
           call pgmove(xcen-.5,y)
           call pgdraw(xcen+.5,y)
           y=ycen-radg*(90-real(i))/90
@@ -225,7 +233,7 @@ c eje NORTE-SUR
         end do
 c eje OESTE-ESTE
         do i=10,80,10
-	  x=radg*(90-real(i))/90+xcen
+          x=radg*(90-real(i))/90+xcen
           call pgmove(x,ycen-.5)
           call pgdraw(x,ycen+.5)
           x=xcen-radg*(90-real(i))/90
