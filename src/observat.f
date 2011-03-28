@@ -1,8 +1,6 @@
 C **********************************************************************
 C                                                    SUBROTUINE OBSERVAT
 C                                                    *******************
-C $Id: observat.f 741 2008-01-18 12:10:37Z spr $
-C
       SUBROUTINE OBSERVAT(OBS,LAT,LONG,ALTOBS)
 C
 C Longitud y latitud (grados), y altura (metros) de los observatorios
@@ -43,7 +41,7 @@ C
     5 CONTINUE
       WRITE(*,*)
       WRITE(*,100)'Observatory number '
-      NOPC=READI('4')
+      NOPC=READI('1')
       IF((NOPC.LT.0).OR.(NOPC.GT.NOBS))THEN
         WRITE(*,101)'ERROR: invalid option. Try again.'
         GOTO 5
@@ -52,20 +50,20 @@ C
       IF(NOPC.EQ.0)THEN
         WRITE(*,*)
         WRITE(*,100)'Observatory name (max. 15 characters)'
-	OBS=READC('@','@')
+        OBS=READC('@','@')
         WRITE(*,100)'Latitude (+DD.MMSS)'
-	LAT=READF('@')
+        LAT=READF('@')
         WRITE(*,100)'Longitude (+DD.MMSS, +E, -W)'
-	LONG=READF('@')
+        LONG=READF('@')
         WRITE(*,100)'Height (metres)'
-	ALTOBS=READF('@')
+        ALTOBS=READF('@')
       ELSE IF(NOPC.EQ.1)THEN
 C Calar Alto
         LAT=37.1305
         LONG=-2.3240
         ALTOBS=2165.
       ELSE IF(NOPC.EQ.2)THEN
-C Izaï¿½a
+C Izaña
         LAT=28.1732
         LONG=-16.2945
         ALTOBS=2400.
@@ -81,14 +79,14 @@ C La Palma
         ALTOBS=2334.
       ELSE IF(NOPC.EQ.5)THEN
 C San Pedro (datos aproximados extraidos de un mapa mundi)
-	LAT=32.0
-	LONG=-115
-	ALTOBS=2000.
+        LAT=32.0
+        LONG=-115
+        ALTOBS=2000.
       ELSE IF(NOPC.EQ.6)THEN
 C Lick (datos facilitados por Jesus Gallego)
-	LAT=37.2036
-	LONG=-123.3812
-	ALTOBS=1283.
+        LAT=37.2036
+        LONG=-123.3812
+        ALTOBS=1283.
       ELSE IF(NOPC.EQ.7)THEN
 C La Silla
         LAT=-29.1500
@@ -102,8 +100,8 @@ C Paranal
       ELSEIF(NOPC.EQ.9)THEN
 C UKIRT
         LAT=19.4932
-	LONG=-155.2824
-	ALTOBS=4194.
+        LONG=-155.2824
+        ALTOBS=4194.
       ELSEIF(NOPC.EQ.10)THEN
 C McDonald
         LAT=30.4018
@@ -116,14 +114,14 @@ C KPNO
         ALTOBS=2120.
       ELSEIF(NOPC.EQ.12)THEN
 C Llano del Hato (Venezuela)
-	LAT=08.4724
+        LAT=08.4724
         LONG=-70.8667
-	ALTOBS=3610.
+        ALTOBS=3610.
       ELSEIF(NOPC.EQ.13)THEN
 C Cerro Tololo (La Serena, Chile)
-	LAT=-30.1416
+        LAT=-30.1416
         LONG=-70.4401
-	ALTOBS=2738.
+        ALTOBS=2738.
       END IF
       IF(NOPC.NE.0)OBS=OBSER(NOPC)
   100 FORMAT(A,$)

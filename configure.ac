@@ -2,7 +2,7 @@
 
 # $Id$
 
-AC_INIT(proas,2.1.2,[ncl@astrax.fis.ucm.es])
+AC_INIT(proas,2.2.0,[cardiel@fis.cum.es])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([config.h.in])
 AM_INIT_AUTOMAKE([foreign])
