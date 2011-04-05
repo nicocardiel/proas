@@ -2,8 +2,6 @@
 
 ## $Id$
 
-SUBDIRS = src m4
+SUBDIRS = src
 
 EXTRA_DIST = sample.dat manual.ps
-
-ACLOCAL_AMFLAGS = -I m4
