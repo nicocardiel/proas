@@ -1,5 +1,3 @@
 #! /bin/sh
 
-# $Id$
-
-autoreconf -s -i -m -f
+autoreconf -s -i -f

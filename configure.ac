@@ -1,7 +1,5 @@
 # Process this file with autoconf to produce a configure script.
 #
-# $Id$
-#
 
 AC_INIT(proas,2.2.1,[cardiel@fis.cum.es])
 AC_CONFIG_HEADERS([config.h])
