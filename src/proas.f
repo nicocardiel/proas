@@ -3,7 +3,7 @@ C **********************************************************************
 C
 C            PROAS: PROGRAMACION DE OBSERVACIONES ASTRONOMICAS
 C
-C             Ultima version: 17-diciembre-1997  (N. Cardiel)
+C             Versión inicial: 17-diciembre-1997  (N. Cardiel)
 C
 C **********************************************************************
 
@@ -11,6 +11,7 @@ C **********************************************************************
 C
       IMPLICIT NONE
       INCLUDE 'proas.inc'
+      INCLUDE 'version.inc'
 C
 C-----------------------------------------------------------------------
 C parametros
@@ -166,18 +167,14 @@ C
 C
       WRITE(*,*)
       WRITE(*,104)
-      WRITE(*,104)
-      WRITE(*,*)
       WRITE(*,101)'                                   '//
      + 'Proas: planning of astronomical observations'
-      WRITE(*,101)'                                   '//
-     + '   Version 18-December-1997, Nicolas Cardiel'
+      WRITE(*,101)'                           '//
+     + '   Initial Version 18-December-1997, Nicolas Cardiel'
       WRITE(*,101)'                                   '//
      + '         Departamento de Astrofisica, U.C.M.'
-      WRITE(*,*)
-      WRITE(*,104)
-      WRITE(*,104)
-      WRITE(*,*)
+      WRITE(*,100) 'Current version: '
+      WRITE(*,*) VERSION
 C                                                 **********************
 C                                                 ESCOGEMOS OBSERVATORIO
 C                                                 **********************

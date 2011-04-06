@@ -28,7 +28,6 @@ C
       WRITE(*,104)
       WRITE(*,101)'ENTER OBSERVATORY'
       WRITE(*,*)
-      WRITE(*,*)
       WRITE(*,160)0,'Observatory data through keyboard (Longitude,'//
      +              'Latitude,Height)'
       DO I=1,NOBS
