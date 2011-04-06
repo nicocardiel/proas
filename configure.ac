@@ -37,5 +37,6 @@ LIBS="$LIBS"
 
 # Output files
 AC_CONFIG_FILES([Makefile
+                src/version.inc
                 src/Makefile])
 AC_OUTPUT
