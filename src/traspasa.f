@@ -1,7 +1,6 @@
 C **********************************************************************
 C                                                    SUBROUTINE TRASPASA
 C                                                    *******************
-C $Id: traspasa.f 558 2007-10-10 16:10:49Z spr $
 C
       SUBROUTINE TRASPASA
 C
