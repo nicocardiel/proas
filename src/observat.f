@@ -63,7 +63,7 @@ C Calar Alto
         LONG=-2.3240
         ALTOBS=2165.
       ELSE IF(NOPC.EQ.2)THEN
-C Izaña
+C IzaÃ±a
         LAT=28.1732
         LONG=-16.2945
         ALTOBS=2400.

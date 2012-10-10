@@ -49,25 +49,25 @@ C
           END IF
           X01=X
           Y01=Y
-	  IF(OPCMEN.NE.'5')THEN
+          IF(OPCMEN.NE.'5')THEN
             IF(REAL(J+IALEAT)/NB.EQ.REAL((J+IALEAT)/NB))THEN
               CALL PGSCH(0.4)
               WRITE(NUMERO,'(I2.2)')NBODY
 ccc              CALL PGPTEXT(X,Y+.5,0.,.5,NUMERO(2-NBODY/10:2))
               CALL PGPTEXT(X,Y+.5,0.,.5,NUMERO)
             END IF
-	  END IF
+          END IF
 C
-	  IF(OPCMEN.EQ.'1')THEN
+          IF(OPCMEN.EQ.'1')THEN
             RADIO=RADG*(90-ALTURA(J))/90
             X=XCEN-RADIO*SIN(ACIMUT(J)*PI/180)
             Y=YCEN-RADIO*COS(ACIMUT(J)*PI/180)
             IF(GRAF)THEN
               CALL PGMOVE(X02,Y02)
- 	      CALL PGDRAW(X,Y)
-	    ELSE
+              CALL PGDRAW(X,Y)
+            ELSE
               CALL PGPOINT(1,X,Y,-1)
-	    END IF
+            END IF
             X02=X
             Y02=Y
             IF(REAL(J+IALEAT)/NB.EQ.REAL((J+IALEAT)/NB))THEN
@@ -75,7 +75,7 @@ C
               WRITE(NUMERO,'(I2.2)')NBODY
               CALL PGPTEXT(X,Y+.5,0.,.5,NUMERO(2-NBODY/10:2))
             END IF
-	  END IF
+          END IF
           GRAF=.TRUE.
         ELSE
           GRAF=.FALSE.
