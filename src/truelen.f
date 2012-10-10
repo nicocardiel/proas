@@ -16,7 +16,7 @@ C CHARACTER*(*) CADENA -> input character string
 C
 Comment
 C------------------------------------------------------------------------------
-	INTEGER FUNCTION TRUELEN(CADENA)
+        INTEGER FUNCTION TRUELEN(CADENA)
         IMPLICIT NONE
         CHARACTER*(*) CADENA
 C
