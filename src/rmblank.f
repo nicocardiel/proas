@@ -16,19 +16,19 @@ C INTEGER       L -> true len of C2
 C
 Comment
 C------------------------------------------------------------------------------
-	SUBROUTINE RMBLANK(C1,C2,L)
-	IMPLICIT NONE
-	INTEGER L
-	CHARACTER*(*) C1,C2
+        SUBROUTINE RMBLANK(C1,C2,L)
+        IMPLICIT NONE
+        INTEGER L
+        CHARACTER*(*) C1,C2
 C
-	INTEGER I,K
+        INTEGER I,K
 C------------------------------------------------------------------------------
-	K=0
-	DO I=1,LEN(C1)
-	  IF(C1(I:I).NE.CHAR(32))THEN
-	    K=K+1
-	    C2(K:K)=C1(I:I)
-	  END IF
-	END DO
-	L=K
-	END
+        K=0
+        DO I=1,LEN(C1)
+          IF(C1(I:I).NE.CHAR(32))THEN
+            K=K+1
+            C2(K:K)=C1(I:I)
+          END IF
+        END DO
+        L=K
+        END
