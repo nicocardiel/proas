@@ -1,0 +1,2 @@
+        CHARACTER*8 VERSION !format nn.nn.nn
+        PARAMETER(VERSION='@VERSION@')
