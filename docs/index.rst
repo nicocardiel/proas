@@ -11,9 +11,7 @@ Welcome to proas's documentation!
 .. toctree::
    :maxdepth: 2
 
-    introduction
-    installation
-    running
-    
-    
-
+   introduction
+   installation
+   running
+   
