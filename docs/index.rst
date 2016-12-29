@@ -6,17 +6,14 @@
 Welcome to proas's documentation!
 =================================
 
-Contents:
+**proas** is a program for planning astronomical observations.
 
 .. toctree::
    :maxdepth: 2
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    Introduction
+    Installing the package
+    Running the program: a sample
+    
+    
 
