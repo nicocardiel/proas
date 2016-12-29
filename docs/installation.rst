@@ -13,7 +13,7 @@ just type
     
 The answer must be something like `/usr/local/pgplot/`
 
-If this is not the case (``PGPLOT is not installed``), you can download `PGPLOT<http://astro.caltech.edu/~tjp/pgplot/>`
+If this is not the case (``PGPLOT`` is not installed), you can download `PGPLOT<http://astro.caltech.edu/~tjp/pgplot/>`
 
 Installation
 -------------

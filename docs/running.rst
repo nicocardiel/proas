@@ -4,8 +4,7 @@ Running the program: an example
 Starting
 ---------
 
-The easiest way to learn how **proas** works is to follow this example (the distribution includes the file
-`sample.dat` used in this example). 
+The easiest way to learn how **proas** works is to follow this example (the distribution includes the file `sample.dat` used in this example). 
 
 :: 
 
@@ -13,9 +12,9 @@ The easiest way to learn how **proas** works is to follow this example (the dist
     
     ===============================================================================
     ===============================================================================
-                                        Proas: planning of astronomical observations
-                                        Version 18-December-1997, Nicolas Cardiel
-                                        Departamento de Astrofisica, U.C.M.
+                                    Proas: planning of astronomical observations
+                                    Version 18-December-1997, Nicolás Cardiel
+                                    Departamento de Astrofisica, U.C.M.
     ===============================================================================
     ===============================================================================
 
@@ -41,7 +40,7 @@ Observer location
 If your observatory is not included in this list, you must select option (0), and enter the new observatory name,
 latitude (format DD.MMSS), longitude (format DD.MMSS), and height (metres).
 
-.. code-block:: console
+::
 
     Observatory name (max. 15 characters)? Mount Everest
     Latitude (+DD.MMSS)? 27.5917
@@ -54,13 +53,13 @@ Coordinates of the objects to be observed
 
 ::
 
-    ==========================================================================================================
+    ===============================================================================
     COORDINATES OF THE TARGET LIST:
     (1) enter object data through keyboard  
     (2) enter object data from file
     
 The coordinates of the objects to be observed can be entered into the program either through the keyboard
-or from an external file.
+or from an external file.
 
 ::
 
@@ -88,8 +87,8 @@ or from an external file.
     Total number of objects: 9
        
 This file could have been generated in an earlier **proas** session (by entering the data through the keyboard and
-saving them into an output file), or by using any text editor. In this last case, remember that the format
-of the file must be the following: a single line per object (maximum 80 characters), containing a text string
+saving them into an output file), or by using any text editor. In this last case, remember that the format
+of the file must be the following: a single line per object (maximum 80 characters), containing a text string
 (maximum 30 characters), right ascension (format HH.MMSS) and declination (+DD.MMSS). These three
 items must be separated by commas (obviously, the text string cannot contain any comma). Valid examples are:
 
@@ -168,9 +167,9 @@ the observing date without exiting from the program (but with the same target li
    :align: center
 
    
-It is important to note that if you select the \ps (PostScript) option, the graphic output is sent to a file
+It is important to note that if you select the \ps (PostScript) option, the graphic output is sent to a file 
 called `pgplot.ps`. Every time you choose this option, a new *pgplot.ps* file is created (and the previous one
-overwritten). So, if you need to create different PostScript files in a single **proas** session, choose option (3) in
+overwritten). So, if you need to create different PostScript files in a single **proas** session, choose option (3) in
 the last menu to indicate an output PostScript file with a different name, e.g.
 
 ::
