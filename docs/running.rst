@@ -26,37 +26,27 @@ Observer location
 
     ===============================================================================
     ENTER OBSERVATORY
-    (0)
-    Observatory data through keyboard (Longitude,Latitude,Height)
-    (1)
-    CALAR ALTO
-    (2)
-    EL TEIDE
-    (3)
-    MADRID
-    (4)
-    LA PALMA
-    (5)
-    SAN PEDRO
-    (6)
-    LICK
-    (7)
-    LA SILLA
-    (8)
-    UKIRT
-    (9)
-    McDonald
+    (0) Observatory data through keyboard (Longitude,Latitude,Height)
+    (1) CALAR ALTO
+    (2) EL TEIDE
+    (3) MADRID
+    (4) LA PALMA
+    (5) SAN PEDRO
+    (6) LICK
+    (7) LA SILLA
+    (8) UKIRT
+    (9) McDonald
     Observatory number [4] ? 4
 
 If your observatory is not included in this list, you must select option (0), and enter the new observatory name,
 latitude (format DD.MMSS), longitude (format DD.MMSS), and height (metres).
 
-::
+.. code-block:: console
 
-    Observatory name (max. 15 characters)? ``Mount Everest``
-    Latitude (+DD.MMSS)? ``27.5917``
-    Longitude (+DD.MMSS, +E, -W)? ``86.5531``
-    Height (metres)? ``8848``
+    Observatory name (max. 15 characters)? Mount Everest
+    Latitude (+DD.MMSS)? 27.5917
+    Longitude (+DD.MMSS, +E, -W)? 86.5531
+    Height (metres)? 8848
 
     
 Coordinates of the objects to be observed
@@ -76,17 +66,16 @@ or from an external file.
 
     option (1,...,2) [2] ? 1
     Object name (<end> to exit, max. 30 characters) [end] ? M 3
-    Right ascension (HH.MMSS)? 12.2000
-    Declination
-        (+GG.MMSS)? +28.2300
+    Right ascension (HH.MMSS)?  12.2000
+    Declination    (+GG.MMSS)? +28.2300
     Object name (<end> to exit, max. 30 characters) [end] ? end
     Do you want to create an output file with current object list (y/n) [n] ? n
     Total number of objects:    1
     
 ::
 
-    option (1,...,2) [2] ? ``2``
-    Object data file name? ``sample.dat``
+    option (1,...,2) [2] ? 2
+    Object data file name? sample.dat
             Coma                12.2200     25.0000
             M 3                 13.4212     28.2300
             M 5                 15.1836     2.0500
@@ -96,7 +85,7 @@ or from an external file.
             M 92                17.1706     43.0800
             M 71                19.5348     18.4700
             NGC 7789            23.5700     56.4400
-    Total number of objects: ``9``
+    Total number of objects: 9
        
 This file could have been generated in an earlier **proas** session (by entering the data through the keyboard and
 saving them into an output file), or by using any text editor. In this last case, remember that the format
@@ -118,7 +107,7 @@ Equinox
 ::
 
     ===============================================================================
-    Equinox (for all the objects) [1950.0] ? ``1950.000``
+    Equinox (for all the objects) [1950.0] ? 1950.000
     
 This equinox will be employed for all the objects (the program does not currently allow to use different values for each
 object).
@@ -131,9 +120,9 @@ Observing date
     ===============================================================================
     ENTER OBSERVING DATE:
     
-    YEAR          ? ``1997``
-    MONTH (number)? ``6``
-    DAY           ? ``13``
+    YEAR          ? 1997
+    MONTH (number)? 6
+    DAY           ? 13
     
     
 In order to avoid confusions, when an observing night expands over two different days, the computed sunset
@@ -151,7 +140,7 @@ Graphic output
     (4) change observing date
     (0) STOP
     
-    Option  (0,...,4) [3] ? ``4``
+    Option  (0,...,4) [3] ? 4
     
 Three different graphic options are currently available. An extra option (number 4), allows the user to change
 the observing date without exiting from the program (but with the same target list).
@@ -165,14 +154,14 @@ the observing date without exiting from the program (but with the same target li
     (4) change observing date
     (0) STOP
     
-    Option (0,...,4) [3] ? ``1``
-    No. of objects/plot (1,...,10) [10] ? ``10``
+    Option (0,...,4) [3] ? 1
+    No. of objects/plot (1,...,10) [10] ? 10
     ===============================================================================
     GRAPHIC OUTPUT:
     (1) /xserve (terminal)
     (2) /ps (PostScript)
     (3) show list with available graphic output devices
-    Option (1,...,3) [1] ? ``1``
+    Option (1,...,3) [1] ? 1
 
 .. image:: images/proas1.png
    :scale: 80%
@@ -191,8 +180,8 @@ the last menu to indicate an output PostScript file with a different name, e.g.
     (1) /xserve (terminal)
     (2) /ps (PostScript)
     (3) show list with available graphic output devices
-    Option (1,...,3) [3] ? ``3``
-    Graphics device/type (? to see list, default /XSERVE): ``myfile.ps/ps``
+    Option (1,...,3) [3] ? 3
+    Graphics device/type (? to see list, default /XSERVE): myfile.ps/ps
 
 ::
 
@@ -202,14 +191,14 @@ the last menu to indicate an output PostScript file with a different name, e.g.
     (3) plot altitude vs UT (draft)
     (4) change observing date
     (0) STOP
-    Option (0,...,4) [3] ? ``2``
-    No. of objects/plot ? ``10``
+    Option (0,...,4) [3] ? 2
+    No. of objects/plot ? 10
     ===============================================================================
     GRAPHIC OUTPUT:
     (1) /xserve (terminal)
     (2) /ps (PostScript)
     (3) show list with available graphic output devices
-    Option (1,...,3) [1] ? ``1``
+    Option (1,...,3) [1] ? 1
 
 .. image:: images/proas2.png
    :scale: 80%
@@ -223,14 +212,14 @@ the last menu to indicate an output PostScript file with a different name, e.g.
     (3) plot altitude vs UT (draft)
     (4) change observing date
     (0) STOP
-    Option (0,...,4) [3] ? ``3``
-    No. of objects/plot (1,...,40) [40] ? ``10``
+    Option (0,...,4) [3] ? 3
+    No. of objects/plot (1,...,40) [40] ? 10
     ===============================================================================
     GRAPHIC OUTPUT:
     (1) /xserve (terminal)
     (2) /ps (PostScript)
     (3) show list with available graphic output devices
-    Option (1,...,3) [1] ? ``1``
+    Option (1,...,3) [1] ? 1
 
 .. image:: images/proas3.png
    :scale: 80%
@@ -247,5 +236,5 @@ Exiting from proas
     (3) plot altitude vs UT (draft)
     (4) change observing date
     (0) STOP
-    Option (0,...,4) [3] ? ``0``
+    Option (0,...,4) [3] ? 0
 
