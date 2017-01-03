@@ -1,8 +1,8 @@
 Proas, planning of astronomical observations
 
-Webpage: https://github.com/nicocardiel/proas
-
-Contact: Nicolas Cardiel cardiel@ucm.es
+Maintainer: Nicolas Cardiel, cardiel@ucm.es
+Webpage (documentation): http://proas.readthedocs.io/
+Webpage (source code): https://github.com/nicocardiel/proas
 
 This program is free software; you can redistribute it and/or modify it under 
 the terms of the GNU General Public License as published by the Free Software 
