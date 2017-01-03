@@ -1,14 +1,14 @@
 # Process this file with autoconf to produce a configure script.
 #
 
-AC_INIT(proas,2.2.1,[cardiel@fis.cum.es])
+AC_INIT(proas,2.2.1,[cardiel@ucm.es])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([config.h.in])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs
 AC_REVISION($Revision$)
-AC_PROG_CC
+#AC_PROG_CC
 AC_PROG_F77
 
 # Safety check

@@ -1,0 +1,14 @@
+.gitignore~
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache
+compile
+config.h.in
+configure
+install-sh
+missing
+src/Makefile.in
+src/proas.dSYM
+
+src/*.o
