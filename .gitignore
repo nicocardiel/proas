@@ -4,11 +4,17 @@ Makefile.in
 aclocal.m4
 autom4te.cache
 compile
+config.h
 config.h.in
+config.log
+config.status
 configure
 install-sh
 missing
 src/Makefile.in
+src/proas
 src/proas.dSYM
+src/version.inc
+stamp-h1
 
 src/*.o
