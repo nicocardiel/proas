@@ -9,7 +9,8 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 # Checks for programs
 AC_REVISION($Revision$)
 #AC_PROG_CC
-AC_PROG_F77
+AC_PROG_F77([f77 fort77 g77 f90 f95 fort g95 gfortran ifort])
+AC_F77_LIBRARY_LDFLAGS
 
 # Safety check
 AC_CONFIG_SRCDIR([src/proas.f])
@@ -31,7 +32,7 @@ esac
 # Checks for libraries
 AC_MSG_RESULT(LDFLAGS set to... $LDFLAGS)
 AC_CHECK_LIB([X11], main,,AC_MSG_ERROR(X11 library not found))
-AC_CHECK_LIB([pgplot], main,,AC_MSG_ERROR(pgplot library not found))
+AC_CHECK_LIB([pgplot], main,,AC_MSG_ERROR(pgplot library not found), [$FLIBS])
 # Define in LIBS all the previous libraries
 LIBS="$LIBS"
 

@@ -9,6 +9,8 @@ config.h.in
 config.h.in~
 config.log
 config.status
+config.guess
+config.sub
 configure
 install-sh
 missing
