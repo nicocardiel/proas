@@ -21,3 +21,5 @@ src/version.inc
 stamp-h1
 
 src/*.o
+
+docs/_build/
