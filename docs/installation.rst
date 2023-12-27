@@ -41,8 +41,8 @@ To install **proas** on your hard disk, you must complete the following steps:
     $ ./configure
     $ make
     
-.. note:: Mac users can easily indicate a different Fortran compiler using
-      ``./configure F77=gfortran-mp-5``.
+.. note:: Mac users can easily indicate a different Fortran and C compilers using
+      ``./configure F77=gfortran-mp-13 CC=gcc-mp-13``.
 
 4.- You must finish the installation procedure by placing the
 executable in its corresponding directory (you may need root privileges):
